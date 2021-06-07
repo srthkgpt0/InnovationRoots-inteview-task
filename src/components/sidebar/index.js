@@ -6,9 +6,9 @@ import { connect, useSelector } from 'react-redux'
 
 import { item as sidebarJSON } from '../../utilities/sidebar'
 
-const Sidebar = ({ match, userType = 'user', userData }) => {
+const Sidebar = ({ match }) => {
   const path = match.path
-  // const userTypes = useSelector((state) => state.userData.userType)
+  const userType = useSelector((state) => state.auth.userData.userType)
   return (
     <>
       <aside className='c-sidemenu' id='sidemenu'>
@@ -54,13 +54,4 @@ const Sidebar = ({ match, userType = 'user', userData }) => {
   )
 }
 
-// const mapStateToProps = (state) => {
-//   return {
-//     cmsData: state.cms.cmsData,
-//     userType: state.auth.userData.userType || '',
-//     userData: state.auth.userData || ''
-//   }
-// }
-
-// export default withRouter(connect(mapStateToProps, null)(Sidebar))
 export default withRouter(Sidebar)

@@ -36,7 +36,7 @@ export default function (ComposedComponent) {
 
     checkAuth = () => {
       const isLoggedInProps = this.props.auth.isLoggedIn
-      const userType = 'admin'
+      const userType = this.props.auth.userData.userType
       const path = this.props.match.path
       const routePaths = this.getRouteArray(userType, true)
       const notRequiredAuthPaths = this.getRouteArray(userType, false)

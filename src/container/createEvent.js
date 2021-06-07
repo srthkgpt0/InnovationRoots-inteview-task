@@ -1,4 +1,4 @@
-import { Button, Form, Input, message } from 'antd'
+import { Button, DatePicker, Form, Input, message } from 'antd'
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import APIrequest from '../services/ApiRequest'
@@ -7,21 +7,22 @@ import ApiEndPoints from '../utilities/ApiEndPoints'
 function CreateEvent() {
   const [form] = Form.useForm()
   const userData = useSelector((state) => state.auth.userData)
-  useEffect(() => {
-    form.setFieldsValue({
-      ...userData
-    })
-  }, [userData])
+  // console.log(userData, 'userData')
+  // useEffect(() => {}, [userData])
   const onFinish = async (values) => {
+    console.log(values.startDate.format('DD/MM/YYYY'))
+    values.startDate = values.startDate.format('DD/MM/YYYY')
+    values.endDate = values.endDate.format('DD/MM/YYYY')
     const payload = {
-      ...ApiEndPoints.updateUser,
+      ...ApiEndPoints.createEvent,
       bodyData: {
         ...values
       }
     }
     const res = await APIrequest(payload)
     if (res.status) {
-      message.success('Successfully Updated', 2)
+      message.success('Successfully Created Event', 2)
+      form.resetFields()
     }
   }
   return (
@@ -33,16 +34,20 @@ function CreateEvent() {
           <Form.Item name='eventName'>
             <Input type='text' />
           </Form.Item>
-
-          <label>Event Start Date</label>
-          <Form.Item name='startDate'>
-            <Input type='date' />
-          </Form.Item>
-
-          <label>Event End Date</label>
-          <Form.Item name='endDate'>
-            <Input type='date' />
-          </Form.Item>
+          <div className='dates'>
+            <div>
+              <label>Event Start Date</label>
+              <Form.Item name='startDate'>
+                <DatePicker format='DD/MM/YYYY' />
+              </Form.Item>
+            </div>
+            <div>
+              <label>Event End Date</label>
+              <Form.Item name='endDate'>
+                <DatePicker format='DD/MM/YYYY' />
+              </Form.Item>
+            </div>
+          </div>
           <label>Event Description</label>
           <Form.Item name='description'>
             <Input.TextArea type='text' />

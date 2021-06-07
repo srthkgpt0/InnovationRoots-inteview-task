@@ -10,7 +10,7 @@ export const item = [
     endPoint: '/',
     addInSideBar: false,
     title: 'Login',
-    userTypes: ['admin'],
+    userTypes: ['admin', 'user'],
     authRequire: false
   },
   {
@@ -18,6 +18,13 @@ export const item = [
     addInSideBar: true,
     title: 'Book Event',
     userTypes: ['user'],
+    authRequire: true
+  },
+  {
+    endPoint: '/registered-users',
+    addInSideBar: true,
+    title: 'Registered User',
+    userTypes: ['admin'],
     authRequire: true
   }
 ]

@@ -14,6 +14,22 @@ const ApiEndPoints = {
   deleteUser: {
     url: '/auth/user',
     method: 'DELETE'
+  },
+  createEvent: {
+    url: '/auth/event',
+    method: 'POST'
+  },
+  getEventList: {
+    url: '/auth/event',
+    method: 'GET'
+  },
+  bookEvent: (id) => ({
+    url: `/auth/event/${id}`,
+    method: 'POST'
+  }),
+  getRegisteredUserList: {
+    url: '/auth/event/registeredUser',
+    method: 'GET'
   }
 }
 export default ApiEndPoints

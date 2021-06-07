@@ -18,7 +18,8 @@ function SignUp() {
         email: values.email,
         password: values.password,
         age: values.age,
-        name: values.name
+        name: values.name,
+        userType: 'user'
       }
     }
     const res = await APIrequest(payload)
@@ -28,8 +29,9 @@ function SignUp() {
   }
   return (
     <>
-      <h2> Signup Form</h2>
-      <div className='container'>
+      <div className='main-content'>
+        <h2> Signup Form</h2>
+
         <h1>Sign Up</h1>
         <p>Please fill in this form to create an account.</p>
         <hr />
@@ -81,7 +83,11 @@ function SignUp() {
             <Link to='/' type='button' className='button cancelbtn'>
               Cancel
             </Link>
-            <Button htmlType='submit' className='button signupbtn'>
+            <Button
+              htmlType='submit'
+              id='signupbtn'
+              className='button signupbtn'
+            >
               Sign Up
             </Button>
           </div>
