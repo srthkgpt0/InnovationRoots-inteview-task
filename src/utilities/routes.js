@@ -7,16 +7,12 @@ export const notRequiredAuthPaths = [
 export const redirectPathIfRequireAuthFails = '/'
 
 export const redirectPathIfNotRequiredAuthFails = [
-  //   {
-  //     path: '/app/account',
-  //     userTypes: ['admin']
-  //   },
   {
     path: '/dashboard',
     userTypes: ['admin']
+  },
+  {
+    path: '/book-event',
+    userTypes: ['user']
   }
-  //   {
-  //     path: '/login',
-  //     userTypes: ['user']
-  //   }
 ]

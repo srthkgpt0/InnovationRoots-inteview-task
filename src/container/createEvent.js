@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import APIrequest from '../services/ApiRequest'
 import '../styles/dashboard.css'
 import ApiEndPoints from '../utilities/ApiEndPoints'
-function Dashboard() {
+function CreateEvent() {
   const [form] = Form.useForm()
   const userData = useSelector((state) => state.auth.userData)
   useEffect(() => {
@@ -27,33 +27,29 @@ function Dashboard() {
   return (
     <>
       <main className='mainContent'>
-        <h2>Edit Details</h2>
+        <h2>Create Event</h2>
         <Form form={form} onFinish={onFinish}>
+          <label>Event Title</label>
+          <Form.Item name='eventName'>
+            <Input type='text' />
+          </Form.Item>
+
+          <label>Event Start Date</label>
+          <Form.Item name='startDate'>
+            <Input type='date' />
+          </Form.Item>
+
+          <label>Event End Date</label>
+          <Form.Item name='endDate'>
+            <Input type='date' />
+          </Form.Item>
+          <label>Event Description</label>
+          <Form.Item name='description'>
+            <Input.TextArea type='text' />
+          </Form.Item>
           <div className='row'>
             <div className='input'>
-              <label>Name</label>
-              <Form.Item name='name'>
-                <Input type='text' />
-              </Form.Item>
-            </div>
-            <div className='input'>
-              <label>Email</label>
-              <Form.Item name='email'>
-                <Input type='text' />
-              </Form.Item>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='input'>
-              <label>Age</label>
-              <Form.Item name='age'>
-                <Input type='number' />
-              </Form.Item>
-            </div>
-          </div>
-          <div className='row'>
-            <div className='input'>
-              <Button htmlType='submit'>Save</Button>
+              <Button htmlType='submit'>Create Event</Button>
             </div>
           </div>
         </Form>
@@ -62,4 +58,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default CreateEvent

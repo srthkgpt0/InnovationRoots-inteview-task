@@ -2,7 +2,8 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Login from '../components/login'
 import SignUp from '../components/signUp'
-import Dashboard from '../container/dashboard'
+import BookEvent from '../container/bookEvent'
+import CreateEvent from '../container/createEvent'
 import LoginLayout from '../layouts/login'
 import MainLayout from '../layouts/main'
 import WithAuth from '../utilities/withAuth'
@@ -10,22 +11,23 @@ import RouteWithLayout from './RouteWithLayout'
 function Routes() {
   return (
     <Switch>
+      <RouteWithLayout component={Login} exact layout={LoginLayout} path='/' />
       <RouteWithLayout
-        component={Login}
+        component={CreateEvent}
         exact
-        layout={WithAuth(LoginLayout)}
-        path='/'
+        layout={MainLayout}
+        path='/dashboard'
       />
       <RouteWithLayout
-        component={Dashboard}
+        component={BookEvent}
         exact
-        layout={WithAuth(MainLayout)}
-        path='/dashboard'
+        layout={MainLayout}
+        path='/book-event'
       />
       <RouteWithLayout
         component={SignUp}
         exact
-        layout={WithAuth(LoginLayout)}
+        layout={LoginLayout}
         path='/sign-up'
       />
     </Switch>

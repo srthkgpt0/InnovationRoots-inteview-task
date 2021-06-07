@@ -1,7 +1,7 @@
 export const item = [
   {
     endPoint: '/dashboard',
-    title: 'Dashboard',
+    title: 'Create Event',
     addInSideBar: true,
     userTypes: ['admin'],
     authRequire: true
@@ -12,5 +12,12 @@ export const item = [
     title: 'Login',
     userTypes: ['admin'],
     authRequire: false
+  },
+  {
+    endPoint: '/book-event',
+    addInSideBar: true,
+    title: 'Book Event',
+    userTypes: ['user'],
+    authRequire: true
   }
 ]
